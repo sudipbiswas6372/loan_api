@@ -36,7 +36,7 @@ public class CustomerController {
         String result = customerService.getLoanDetails(
                 accountNumber, branchCode);
 
-        System.out.println("API Total Time : "
+        System.out.println("API Total Time is : "
                 + (System.currentTimeMillis() - start) + " ms");
 
         return ResponseEntity.ok(result);

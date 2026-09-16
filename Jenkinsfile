@@ -23,10 +23,11 @@ pipeline {
         }
 
         stage('Deploy Kubernetes') {
-            steps {
-                sh 'kubectl apply -f k8s/deployment.yaml'
-                sh 'kubectl apply -f k8s/service.yaml'
-            }
-        }
+                    steps {
+                        retry(3) {
+                            sh 'kubectl apply -f k8s/deployment.yaml'
+                            sh 'kubectl apply -f k8s/service.yaml'
+                        }
+                    }
     }
 }
